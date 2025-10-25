@@ -969,3 +969,109 @@ body {
     /* animation: blink-cursor 0.75s step-end infinite; */
 }
 
+/* =================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ================================= */
+
+/* Apply these styles for screens 992px wide or smaller (Tablets and Phones) */
+@media (max-width: 992px) {
+
+    /* --- General Section Layout --- */
+    body {
+        padding-top: 80px; /* Reduce top padding for smaller screens */
+    }
+
+    .section-container {
+        padding: 60px 5%; /* Reduce padding on all sections */
+    }
+
+    /* --- 'About Me' Section (Final Version) --- */
+    .about-section-final {
+        flex-direction: column; /* Stack the 3 columns vertically */
+        align-items: center; /* Center the items */
+        text-align: center;
+        gap: 50px;
+    }
+
+    .about-image-column,
+    .about-content-column,
+    .about-logo-column {
+        flex-basis: 100%; /* Each column takes full width */
+        max-width: 500px; /* Prevent content from being too wide on tablets */
+    }
+
+    .about-content-column {
+        order: -1; /* Move the text content above the image on mobile */
+    }
+    
+    .skills-list {
+        text-align: left; /* Keep list items left-aligned for readability */
+    }
+
+    /* --- Projects Section --- */
+    .projects-grid {
+        grid-template-columns: 1fr; /* Stack project cards into a single column */
+    }
+
+    /* --- Experience Section --- */
+    .experience-item {
+        flex-direction: column; /* Stack the blue card and description vertically */
+        gap: 20px;
+    }
+
+    .experience-info-card {
+        width: 100%; /* Make the blue card take full width */
+        max-width: none;
+    }
+
+    /* --- Contact Section --- */
+    .contact-container {
+        flex-direction: column; /* Stack the info and form vertically */
+        gap: 40px;
+    }
+
+    .contact-info-left {
+        border-right: none; /* Remove the vertical line */
+        border-bottom: 1px solid #303c55; /* Add a horizontal line instead */
+        padding-right: 0;
+        padding-bottom: 30px;
+    }
+
+    .contact-form-right {
+        padding-left: 0;
+    }
+    
+    .form-row {
+        flex-direction: column; /* Stack 'Name' and 'Email' fields */
+        gap: 20px;
+    }
+}
+
+
+/* Apply these styles for screens 768px wide or smaller (Mainly Phones) */
+@media (max-width: 768px) {
+
+    /* --- Header / Navbar --- */
+    .nav-links {
+        display: none; /* Hide the navigation links */
+    }
+
+    .nav-container {
+        padding: 0 5%;
+    }
+
+    .logo {
+        font-size: 24px; /* Make logo smaller */
+    }
+    
+    /* (Note: For a real mobile menu, you would add a hamburger icon that toggles the nav-links visibility with JavaScript. 
+       For now, hiding them is the simplest fix.) */
+
+    /* --- Headings --- */
+    .about-headline {
+        font-size: 28px;
+    }
+    .section-title {
+        font-size: 24px;
+    }
+}
