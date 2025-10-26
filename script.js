@@ -134,3 +134,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ... your other JavaScript code (form handler, typing animation, etc.)
 });
+
+
+
+// --- MOBILE MENU TOGGLE SCRIPT ---
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    if (menuToggle && navLinks) {
+        // Toggle menu on icon click
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Hide menu when a link is clicked (for single-page navigation)
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Only hide if the menu is active
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    }
+});
+

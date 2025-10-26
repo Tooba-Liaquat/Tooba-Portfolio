@@ -7,6 +7,7 @@ body {
     padding-top: 100px; 
     box-sizing: border-box;
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
 }
 
 /* =================
@@ -50,6 +51,12 @@ body {
     gap: 25px; /* Space between nav-links and the button */
 }
 
+/* Hide menu toggle by default on desktop */
+.menu-toggle {
+    display: none;
+}
+
+
 .logo {
     font-family: 'calibri', sans-serif;
     font-size: 25px;
@@ -81,6 +88,11 @@ body {
     font-weight: bold;
     transition: background-color 0.3s;
     font-family: 'Times New Roman', Times, serif;
+    border-color: blueviolet;
+}
+.cta-button:hover {
+    background-color:transparent;
+    color: #ffffff;
 }
 
 /* =================
@@ -90,7 +102,8 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 50px 5% 0px 7% ;
+    /* padding: 50px 5% 0px 7% ; */ 
+    padding: 50px 5% 0px 0%; 
     
 }
 
@@ -100,11 +113,10 @@ body {
     /* MODIFIED: Pushes the text and image to opposite ends */
     justify-content: space-between; 
     /* The 'gap' property is no longer needed but can be kept as a fallback */
-    gap: -30px;
+    gap: 70px; /* Changed from -30px to a positive value for better control */
     max-width: 1200px;
     width: 100%; /* Add this to ensure the container uses the full available width */
-    margin-right: 0%;
-    margin-left: 0px;
+    margin: 0 auto; /* Center the container */
 }
 
 .home-text {
@@ -262,7 +274,7 @@ body {
 .about-details-container {
     display: flex;
     align-items: flex-start; /* Align items to the top */
-    gap: 10px;
+    gap: 30px; /* Increased gap for better spacing */
     max-width: 1300px;
     margin: 0 auto;
 }
@@ -290,7 +302,7 @@ body {
 /* Circular graphic positioning (move slightly down) */
 .circular-graphic img {
     display: block;
-    max-width: 110%;
+    max-width: 100%;
     width: auto;
     height: auto;
     transform: translateY(250px) scale(1.08); /* slightly larger */
@@ -435,8 +447,8 @@ body {
 /* Resume Button */
 .resume-button {
     display: inline-block;
-    background-color: transparent;
-    color: #007bff;
+    background-color: #007bff;
+    color: #fcfcfc;
     border: 2px solid #007bff;
     padding: 12px 30px;
     border-radius: 25px;
@@ -446,7 +458,7 @@ body {
 }
 
 .resume-button:hover {
-    background-color: #007bff;
+    background-color:transparent;
     color: #ffffff;
 }
 
@@ -508,7 +520,7 @@ body {
     align-items: start;
     gap: 15px;
     /* MODIFIED: Increased max-width to use more screen space */
-    max-width: 85vw; /* Use 90% of the viewport width */
+    max-width: 1200px; /* Set a max-width for desktop */
     margin: 0 auto;
 }
 
@@ -535,6 +547,7 @@ body {
     height: 150px;
     overflow: hidden;
     gap: 15px;
+    
 }
 
 .project-image {
@@ -594,9 +607,9 @@ body {
 }
 
 .project-title {
-    font-size: 18px;
+    font-size: 15px;
     color: #030303;
-    margin: 0 0 -10px 0;
+    margin: 0 0 -15px 0;
     padding: 5px 10px;
 }
 
@@ -674,13 +687,12 @@ body {
 .experience-list {
     display: flex;
     flex-direction: column;
-    /* MODIFIED: Use padding for alignment, not margin */
-    max-width: none; /* Allow it to span wider */
-    margin: 0;
+    max-width: 1200px; /* Added max-width to control overall width */
+    margin: 0 auto; /* Center the list */
     padding: 0 7%;
     gap: 30px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #fcf8f8; /* Use percentage-based padding for responsiveness */
+    color: #fcf8f8;
 }
 
 /* Correct styling for the main container of each job */
@@ -751,7 +763,7 @@ body {
 .contact-container {
     display: flex;
     max-width: 1200px;
-    max-height: 450px;
+    /* Removed max-height: 450px; to fix form overflow */
     margin: 0 auto;
     background-color: #1c3253; /* Dark blue background for the container */
     border-radius: 15px;
@@ -810,7 +822,7 @@ body {
 .contact-form-right {
     flex-basis: 65%; /* Takes up the remaining 65% */
     padding-left: 40px;
-    max-height: 450px;
+    /* Removed max-height: 450px; to fix form overflow */
 }
 
 .contact-form-right h2 {
@@ -976,41 +988,116 @@ body {
 /* Apply these styles for screens 992px wide or smaller (Tablets and Phones) */
 @media (max-width: 992px) {
 
-    /* --- General Section Layout --- */
-    body {
-        padding-top: 80px; /* Reduce top padding for smaller screens */
+    /* --- Navbar --- */
+    .nav-links {
+        display: none; /* Hide the navigation links on screens <= 992px */
     }
 
-    .section-container {
-        padding: 60px 5%; /* Reduce padding on all sections */
-    }
-
-    /* --- 'About Me' Section (Final Version) --- */
-    .about-section-final {
-        flex-direction: column; /* Stack the 3 columns vertically */
-        align-items: center; /* Center the items */
-        text-align: center;
-        gap: 50px;
-    }
-
-    .about-image-column,
-    .about-content-column,
-    .about-logo-column {
-        flex-basis: 100%; /* Each column takes full width */
-        max-width: 500px; /* Prevent content from being too wide on tablets */
-    }
-
-    .about-content-column {
-        order: -1; /* Move the text content above the image on mobile */
+    .menu-toggle {
+        display: block; /* Show on mobile */
+        font-size: 24px;
+        color: #ffffff;
+        cursor: pointer;
     }
     
-    .skills-list {
-        text-align: left; /* Keep list items left-aligned for readability */
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px; /* Adjust as needed */
+        right: 5%;
+        background: #17273e;
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 999; /* Ensure it's above other content */
+    }
+
+    /* --- Home Section --- */
+    .main-content {
+        /* Remove fixed padding and let the container handle it */
+        padding: 50px 5% 0px 5%;
+    }
+    .home-container {
+        flex-direction: column; /* Stack text and image vertically */
+        text-align: center;
+        gap: 40px;
+    }
+    .home-text {
+        order: 2; /* Text below image */
+        max-width: 100%;
+    }
+    .home-text h1, .job-title, .home-text p {
+        text-align: center;
+    }
+    .social-icons {
+        justify-content: center; /* Center the social icons */
+    }
+    .home-image {
+        order: 1; /* Image above text */
+        display: flex;
+        justify-content: center;
+    }
+    .home-image img {
+        width: 200px;
+        height: 250px;
+        padding: 0; /* Remove excessive padding */
+    }
+
+    /* --- About Section --- */
+    .about-details-container {
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center;
+        text-align: center;
+    }
+    .about-details-image {
+        flex-basis: 100%;
+        margin-top: 0;
+        padding: 0;
+    }
+    .about-details-image img {
+        width: 60%; /* Make the image a reasonable size on mobile */
+        max-width: 300px;
+        padding: 0;
+    }
+    .circular-graphic {
+        display: none; /* Hide the large background graphic on mobile */
+    }
+    .about-details-text {
+        flex-basis: 100%;
+        text-align: center;
+        margin-top: 20px;
+        padding: 0 5%;
+    }
+    .about-details-text .intro-tag,
+    .about-details-text h2,
+    .job-title-secondary {
+        text-align: center;
+    }
+    .about-details-text p {
+        text-align: left; /* Keep paragraphs left-aligned for readability */
+    }
+    .summary-boxes {
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     /* --- Projects Section --- */
     .projects-grid {
         grid-template-columns: 1fr; /* Stack project cards into a single column */
+        max-width: 90%;
+    }
+    .project-card.large {
+        grid-row: auto; /* Reset grid-row span for single column layout */
+    }
+    .project-card.large .project-image-container {
+        height: 200px; /* Reduce height for mobile */
+    }
+    .project-card {
+        margin: 15px auto;
+        max-width: 400px;
+    }
+    .project-image-container {
+        height: 180px;
     }
 
     /* --- Experience Section --- */
@@ -1020,14 +1107,18 @@ body {
     }
 
     .experience-info-card {
+        flex-basis: auto;
         width: 100%; /* Make the blue card take full width */
         max-width: none;
+        box-sizing: border-box; /* Ensure padding is included in the width */
     }
 
     /* --- Contact Section --- */
     .contact-container {
         flex-direction: column; /* Stack the info and form vertically */
         gap: 40px;
+        max-height: none; /* Allow height to adjust */
+        padding: 20px;
     }
 
     .contact-info-left {
@@ -1035,26 +1126,54 @@ body {
         border-bottom: 1px solid #303c55; /* Add a horizontal line instead */
         padding-right: 0;
         padding-bottom: 30px;
+        flex-basis: 100%;
     }
 
     .contact-form-right {
         padding-left: 0;
+        flex-basis: 100%;
+        max-height: none;
     }
-    
+
     .form-row {
         flex-direction: column; /* Stack 'Name' and 'Email' fields */
         gap: 20px;
     }
 }
 
+    
+
 
 /* Apply these styles for screens 768px wide or smaller (Mainly Phones) */
 @media (max-width: 768px) {
 
-    /* --- Header / Navbar --- */
-    .nav-links {
-        display: none; /* Hide the navigation links */
+    /* --- Home Section --- */
+    .home-text h1 { font-size: 32px; }
+    .job-title { font-size: 38px; }
+
+/* --- Navbar --- */
+
+
+    .nav-container {
+        padding: 0 5%;
     }
+
+    .logo {
+        font-size: 20px; /* Make logo smaller */
+    }
+
+    /* --- Headings --- */
+    .about-headline {
+        font-size: 28px;
+    }
+    .section-title {
+        font-size: 24px;
+    }
+}
+
+    /* --- Header / Navbar --- */
+    /* --- Navbar --- */
+
 
     .nav-container {
         padding: 0 5%;
@@ -1073,5 +1192,230 @@ body {
     }
     .section-title {
         font-size: 24px;
+    }
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .experience-info-card {
+        width: auto; /* Let the content define the width */
+        max-width: 100%; /* Ensure it doesn't overflow */
+    }
+}
+
+/* =================================
+   PROJECTS SECTION - RESPONSIVE FIX
+   ================================= */
+
+/* This media query targets screens 768px wide or smaller (tablets and phones) */
+@media (max-width: 768px) {
+
+    /* 1. Change the grid to a single column */
+    .projects-grid {
+        grid-template-columns: 1fr; /* This is the key fix: 1 column only */
+        padding: 0 5%; /* Add some side padding for mobile view */
+    }
+
+    /* 2. Reset the special "large" card styling on mobile */
+    .project-card.large {
+        grid-row: auto; /* Reset the row span */
+        grid-column: auto; /* Reset the column span */
+    }
+
+    /* 3. Give all cards a consistent image height on mobile */
+    .project-card .project-image-container {
+        height: 200px; /* Adjust this value as you see fit */
+    }
+
+    /* 4. (Optional but recommended) Reset the margin on the cards for a cleaner look */
+    .project-card {
+        margin: 15px 0; /* Simpler vertical margin */
+    }
+}
+
+/* =========================================
+   STYLISH & RESPONSIVE EDUCATION SECTION
+   This code is scoped to .education-section
+   and will not affect other elements.
+   ========================================= */
+/* =============================================
+   CREATIVE EDUCATION SECTION (with University Images)
+   ============================================= */
+
+/* Main Section Container */
+.education-section {
+    padding: 80px 7%;
+    background-color: #0f172a;
+    color: #cbd5e1;
+    overflow: visible;
+}
+
+/* Left-Aligned Title */
+.education-section .section-title {
+    text-align: left;
+    margin-bottom: 60px;
+}
+
+.education-section .section-title .tag {
+    background-color: #1e293b;
+    color: #94a3b8;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.education-section .section-title h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Container for the cards */
+.education-section .education-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* --- The Creative Education Card --- */
+.education-section .education-item {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 30px; /* Gap between details and image */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* The floating icon on the left */
+.education-section .education-icon {
+    position: absolute;
+    left: -30px; /* Positioned to overlap the edge */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, #8b5cf6, #6366f1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.8rem;
+    box-shadow: 0 8px 20px rgba(100, 102, 241, 0.3);
+    transition: all 0.3s ease;
+    z-index: 2; /* Ensure icon is on top */
+}
+
+/* Main text content area */
+.education-section .education-details {
+    flex: 1; /* Allows this section to take up available space */
+    padding-left: 45px; /* Space for the icon */
+    position: relative; /* For the separator line */
+}
+
+/* The separator line (as highlighted in yellow) */
+.education-section .education-details::after {
+    content: '';
+    position: absolute;
+    right: -15px; /* Position between details and image */
+    top: 10%;
+    bottom: 10%;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #4f46e5, transparent);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover effects */
+.education-section .education-item:hover {
+    transform: translateY(-10px);
+    border-color: #6366f1;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.education-section .education-item:hover .education-icon {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.education-section .education-item:hover .education-details::after {
+    opacity: 1; /* Make the separator line glow on hover */
+}
+
+/* Typography */
+.education-section .education-details h3 {
+    font-size: 1.4rem;
+    color: #f1f5f9;
+    margin-bottom: 5px;
+}
+
+.education-section .education-details .date {
+    font-size: 0.9rem;
+    color: #818cf8; /* Accent color for the date */
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.education-section .education-details .university,
+.education-section .education-details .location {
+    font-size: 1rem;
+    color: #94a3b8;
+    line-height: 1.5;
+}
+
+/* 1. The University Image Container */
+.education-section .education-image {
+    width: 280px; /* Fixed width for the image container */
+    height: 180px; /* Fixed height */
+    border-radius: 10px;
+    overflow: hidden; /* Ensures image fits perfectly */
+    flex-shrink: 0; /* Prevents the image from shrinking */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.education-section .education-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    transition: transform 0.3s ease;
+}
+
+.education-section .education-item:hover .education-image img {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 768px) {
+    .education-section .education-item {
+        flex-direction: column;
+        padding: 25px;
+        padding-top: 50px; /* Extra top padding for the icon */
+    }
+
+    .education-section .education-icon {
+        left: 50%;
+        top: -30px; /* Position above the card */
+        transform: translateX(-50%);
+    }
+
+    .education-section .education-details {
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .education-section .education-details::after {
+        display: none; /* Hide separator line on mobile */
+    }
+
+    .education-section .education-image {
+        width: 100%; /* Full width on mobile */
+        height: 150px; /* Adjust height as needed */
+        margin-top: 20px;
     }
 }
