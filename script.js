@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const typedTextSpan = document.querySelector(".typed-text");
     
     // 2. Define the words you want to type out
-    const textArray = ["Data Scientist", "Data Analyst"]; 
+    const textArray = ["ML Engineer", "Data Analyst"]; 
     
     // 3. Set up the variables for the animation
     const typingDelay = 200; // Speed of typing

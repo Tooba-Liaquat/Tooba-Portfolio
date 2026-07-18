@@ -56,6 +56,46 @@ body {
     display: none;
 }
 
+.name-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.name-banner .name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e90ff;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Icon */
+.name-banner .icon img {
+  width: 45px;
+  height: 45px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover Effects */
+.name-banner:hover {
+  transform: scale(1.08);
+}
+
+.name-banner:hover .icon img {
+  transform: scale(1.2) rotate(-10deg);
+  filter: drop-shadow(0 0 8px transparent);
+}
+
+.name-banner:hover .prefix,
+.name-banner:hover .name {
+  text-shadow: 0 0 10px #1e90ff, 0 0 20px #1e90ff;
+}
+
+
 
 .logo {
     font-family: 'calibri', sans-serif;
@@ -104,6 +144,7 @@ body {
     align-items: center;
     /* padding: 50px 5% 0px 7% ; */ 
     padding: 50px 5% 0px 0%; 
+    scroll-margin-top: 80px;
     
 }
 
@@ -117,6 +158,7 @@ body {
     max-width: 1200px;
     width: 100%; /* Add this to ensure the container uses the full available width */
     margin: 0 auto; /* Center the container */
+    margin-bottom: 230px;
 }
 
 .home-text {
@@ -138,21 +180,74 @@ body {
 
 .home-text h1 { font-size: 38px; margin: 0 0 5px 0;  font-family: 'Arial'; }
 .job-title { font-size: 45px; color: #0073ef; margin-bottom: 5px;  font-family: 'Arial';}
-.home-text p { font-size: 16px; line-height: 1.7; color: #f5f5f5; margin-bottom: 20px; }
+.home-text p { font-size: 16px; line-height: 1.7; color: #f5f5f5; margin-bottom: 20px; text-align: justify;}
 
-.home-image { flex-shrink: 0; }
-.home-image img {
-    width: 250px;
-    height: 300px;
-    object-fit: cover; /* Keeps the image filling the square without distortion */
-    object-position: top; /* MODIFIED: Aligns the image from the top, preserving the head */
-    border-radius: 20px;
-    
-    /* MODIFIED: Removed the properties causing the "border" effect */
-    background-color: transparent; 
-    padding: 20%;
-    
+
+.image-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #00bfa6;
+  box-shadow: 0 0 15px rgba(0, 191, 166, 0.4);
+  transition: all 0.4s ease;
+  margin-top: 50px;
+
+  /* 👇 Added animation on load */
+  opacity: 0;
+  transform: scale(0.8);
+  animation: popIn 1s ease-out forwards;
 }
+
+/* Pop-in animation */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+}
+
+/* Hover effect */
+.image-container:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(0, 191, 166, 0.7);
+  border-color: #00ffe0;
+}
+
+.image-container:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Subtle slow glow animation */
+@keyframes subtle-glow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* Click/hover pulse glow */
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 20px 5px rgba(0, 255, 204, 0.5); }
+  100% { box-shadow: 0 0 40px 15px rgba(0, 255, 204, 0.9); }
+}
+
 /* =================
    SOCIAL ICONS (ALWAYS COLORFUL)
    ================= */
@@ -206,17 +301,16 @@ body {
 
 
 /* =================
-   GENERAL SECTION STYLING
+   ABOUT ME SECTION
    ================= */
 .section-container {
     padding: 80px 0%;
     text-align: center;
-    scroll-margin-top: 40px; 
 }
 
 .section-title {
     font-size: 36px;
-    margin-bottom: 2px; /* tightened spacing below title */
+    margin-bottom: 2px; 
     line-height: 1.05;
     color: #ffffff;
 }
@@ -224,16 +318,29 @@ body {
 .section-subtitle {
     font-size: 18px;
     color: #bdc4d3;
-    margin-top: 2px; /* pull subtitle closer to title */
+    margin-top: 2px; 
     margin-bottom: 12px;
     line-height: 1.25;
 }
 
-
-
 /* =================
-    ABOUT ME SECTION
+   ABOUT SECTION ENHANCEMENTS
    ================= */
+#about {
+  background: linear-gradient(180deg, #06141d 0%, #0a1f1c 100%); /* dark gradient for separation */
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 120px 5%; /* increased top padding to push it slightly down */
+  scroll-margin-top: 10px; /* ensures nav link scroll starts correctly */
+  transition: background 0.6s ease;
+}
+
+/* Optional: smooth hover tone shift */
+#about:hover {
+  background: linear-gradient(180deg, #082029 0%, #0d2f25 100%);
+}
+
+
    #about-details {
     padding-top: 60px; /* slightly reduced top space */
     padding-bottom: 10px; /* further reduced bottom space to bring projects section closer */
@@ -277,27 +384,9 @@ body {
     gap: 30px; /* Increased gap for better spacing */
     max-width: 1300px;
     margin: 0 auto;
+    align-items: center;
 }
 
-/* Left Side Image */
-.about-details-image {
-    flex-basis: 35%; /* MODIFIED: Reduced the space for the image container */
-    flex-shrink: 0;
-    margin-top: -30px;
-}
-
-/* This styles the actual image tag */
-.about-details-image img {
-    width: 90%; /* MODIFIED: Makes the image fill its container */
-    height: auto; /* MODIFIED: Maintains the aspect ratio */
-    object-fit: cover; /* Ensures it covers the area nicely if you set a height */
-    object-position: top; /* Keeps the head from being cut off */
-    border-radius: 10px;
-    
-    /* MODIFIED: Removed padding that was making the image small */
-    padding: 100px 10% 100px 0%; 
-    background-color: transparent;
-}
 
 /* Circular graphic positioning (move slightly down) */
 .circular-graphic img {
@@ -320,10 +409,12 @@ body {
     background-color: #102a43;
     padding: 8px 15px;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 20px;
     display: inline-block;
     margin-bottom: 15px;
     margin-top: -10px;
+    text-align: center;
+    align-items: center;
     font-family: Calibri, Arial, sans-serif;
 }
 
@@ -348,6 +439,7 @@ body {
     font-family: Calibri, Arial, sans-serif;
     font-size: 17px; /* increased by 2px */
     font-weight: 400;
+    text-align: justify;
 }
 
 .about-details-text p strong {
@@ -469,33 +561,37 @@ body {
    CORRECTED ANIMATED LOGO STYLES
    ================= */
 
-/* This is the main container for the logo, it rotates */
-.animated-logo-container {
-    position: relative;
-    width: 250px;  /* The total size of the logo */
-    height: 250px;
-    margin-top: 180px;
-    animation: rotate-logo 40s linear infinite; /* The slow rotation animation */
-}
-
-/* This is the style for each individual line we will create with JavaScript */
 .animated-logo-container .line {
     position: absolute;
     left: 50%;
     top: 50%;
-    
-    /* FIX #1: REMOVED the margin-top. This was breaking the layout. */
-    /* margin-top: 170px; */ 
-    
-    width: 1.5px; /* The thickness of each line */
-    height: 125px; /* The length of each line (half the container's height) */
-    
-    /* The color of the lines - a nice teal */
-    background-color: #64ffda; 
-    
-    /* This sets the rotation point to the center of the container */
-    transform-origin: top center; 
+    width: 1.5px;              /* line thickness */
+    height: 125px;             /* full line length */
+    background-color: transparent; /* hide the center part */
+    transform-origin: top center;
 }
+
+/* Create the visible outer part of each line */
+.animated-logo-container .line::after {
+    content: '';
+    position: absolute;
+    top: 40px;                 /* distance from the center = inner circle radius */
+    left: 0;
+    width: 100%;
+    height: 85px;              /* visible segment length */
+    background-color: #048063; /* line color */
+}
+.animated-logo-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin-top: 180px;        /* your original placement */
+    margin-left: 100px;        /* center horizontally */
+    margin-right: auto;
+    animation: rotate-logo 40s linear infinite;
+    transform-origin: center center;  /* ensures rotation around center */
+}
+
 
 /* The animation keyframes that define the rotation */
 @keyframes rotate-logo {
@@ -1261,14 +1357,15 @@ body {
 
 .education-section .section-title .tag {
     background-color: #1e293b;
-    color: #94a3b8;
+    color: #dae0e9;
     padding: 5px 15px;
     border-radius: 5px;
-    font-weight: 600;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .education-section .section-title h2 {
-    font-size: 2.5rem;
+    font-size: 26px;
     color: #fff;
     text-transform: uppercase;
 }
@@ -1419,3 +1516,4 @@ body {
         margin-top: 20px;
     }
 }
+
